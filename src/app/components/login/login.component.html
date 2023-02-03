@@ -1,0 +1,75 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="username.errors && f.submitted"
+        >
+          Username obrigratório!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input
+          type="password"
+          class="form-control"
+          name="senha"
+          [(ngModel)]="form.senha"
+          required
+          minlength="6"
+          #senha="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="senha.errors && f.submitted"
+        >
+          <div *ngIf="senha.errors['required']">Senha obrigatória</div>
+          <div *ngIf="senha.errors['minlength']">
+            Senha precisa de 6 caracteres
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">
+          Login
+        </button>
+      </div>
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Falha ao logar ಥ_ಥ: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Logado como: {{ roles }} ╰(*°▽°*)╯
+    </div>
+  </div>
+</div>

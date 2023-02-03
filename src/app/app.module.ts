@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import {FormsModule} from "@angular/forms";
+import { CarteiraComponent } from './components/carteira/carteira.component';
+import { TransferirComponent } from './components/transferir/transferir.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import {FormsModule} from "@angular/forms";
     RegistrarComponent,
     HomeComponent,
     BoardAdminComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    CarteiraComponent,
+    TransferirComponent
   ],
   imports: [
     BrowserModule,
