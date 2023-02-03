@@ -27,16 +27,7 @@ export class PilacoinService {
   update(id: any, data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
-
-  delete(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
-  }
-
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
-  }
-
-  findById(id: any): Observable<Pilacoin[]> {
-    return this.http.get<Pilacoin[]>(`${baseUrl}?idCriador=${id}`);
   }
 }

@@ -42,14 +42,14 @@ export class CarteiraComponent {
     this.currentIndex = index;
   }
 
-  removeAllPilacoin(): void {
-    this.pilacoinService.deleteAll()
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.refreshList();
-        },
-        error: (e) => console.error(e)
+          removeAllPilacoin(): void {
+      this.pilacoinService.deleteAll()
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            this.refreshList();
+          },
+          error: (e) => console.error(e)
       });
   }
 

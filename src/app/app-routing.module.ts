@@ -7,7 +7,6 @@ import {CarteiraComponent} from "./components/carteira/carteira.component";
 import {TransferirComponent} from "./components/transferir/transferir.component";
 
 const routes: Routes = [
-
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
