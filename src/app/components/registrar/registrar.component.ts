@@ -7,10 +7,14 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./registrar.component.css']
 })
 export class RegistrarComponent implements OnInit {
-  form: any = {
-    username: null,
-    email: null,
-    senha: null
+  usuario: any = {
+    id: '',
+    username: '',
+    chavePublica: '',
+    chavePrivada:'',
+    nome:'',
+    email:'',
+    senha:'',
   };
   isSuccessful = false;
   isSignUpFailed = false;
@@ -22,7 +26,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, email, senha } = this.form;
+    const { username, email, senha } = this.usuario;
 
     this.authService.register(username, email, senha).subscribe({
       next: data => {

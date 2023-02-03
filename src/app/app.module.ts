@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { HomeComponent } from './components/home/home.component';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardUserComponent } from './board-user/board-user.component';
 import {FormsModule} from "@angular/forms";
 import { CarteiraComponent } from './components/carteira/carteira.component';
 import { TransferirComponent } from './components/transferir/transferir.component';
@@ -18,10 +16,8 @@ import { TransferirComponent } from './components/transferir/transferir.componen
     LoginComponent,
     RegistrarComponent,
     HomeComponent,
-    BoardAdminComponent,
-    BoardUserComponent,
     CarteiraComponent,
-    TransferirComponent
+    TransferirComponent,
   ],
   imports: [
     BrowserModule,

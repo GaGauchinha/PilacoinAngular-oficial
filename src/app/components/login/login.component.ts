@@ -8,26 +8,26 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  form: any = {
+  usuario: any = {
     username: null,
-    senha: null
+    senha: null,
+    email: null,
   };
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      this.usuario = this.tokenStorage.getUser();
     }
   }
 
   onSubmit(): void {
-    const { username, senha } = this.form;
+    const { username, senha } = this.usuario;
 
     this.authService.login(username, senha).subscribe({
       next: data => {
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        this.usuario = this.tokenStorage.getUser();
         this.reloadPage();
       },
       error: err => {

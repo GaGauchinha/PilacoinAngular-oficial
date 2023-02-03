@@ -1,1 +1,55 @@
-<p>carteira works!</p>
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Lista de Pilacoins</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let pilacoin of pilacoin; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActivePilacoin(pilacoin, i)"
+      >
+        {{ pilacoin.id }}
+      </li>
+    </ul>
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllPilacoin()">
+      Remover tudo
+    </button>
+  </div>
+
+  <div class="col-md-6">
+    <div *ngIf="currentPilacoin">
+      <h4>Pilacoin</h4>
+      <div>
+        <label><strong>Id do Pila:</strong></label> {{ currentPilacoin.id }}
+      </div>
+      <div>
+        <label><strong>Id do Criador:</strong></label>
+        {{ currentPilacoin.idCriador }}
+      </div>
+      <div>
+        <label><strong>Data Criação:</strong></label>
+        {{ currentPilacoin.dataCriacao}}
+      </div>
+      <div>
+        <label><strong>Chave Criador:</strong></label>
+        {{ currentPilacoin.chaveCriador }}
+      </div>
+      <div>
+        <label><strong>Assinatura Master:</strong></label>
+        {{ currentPilacoin.assinaturaMaster }}
+      </div>
+      <div>
+        <label><strong>Nonce:</strong></label>
+        {{ currentPilacoin.nonce }}
+      </div>
+      <a class="badge badge-warning" routerLink="/transferir/{{ currentPilacoin.id }}">
+        Transferir
+      </a>
+    </div>
+
+    <div *ngIf="!currentPilacoin">
+      <br />
+      <p>Clique em uma receita</p>
+    </div>
+  </div>
+</div>

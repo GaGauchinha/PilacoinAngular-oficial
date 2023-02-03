@@ -1,1 +1,112 @@
-<p>transferir works!</p>
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentPilacoin.id">
+    <h4>Pilacoin</h4>
+    <div>
+      <label><strong>Id do Pila:</strong></label> {{ currentPilacoin.id }}
+    </div>
+    <div>
+      <label><strong>Id do Criador:</strong></label>
+      {{ currentPilacoin.idCriador }}
+    </div>
+    <div>
+      <label><strong>Data Criação:</strong></label>
+      {{ currentPilacoin.dataCriacao}}
+    </div>
+    <div>
+      <label><strong>Chave Criador:</strong></label>
+      {{ currentPilacoin.chaveCriador }}
+    </div>
+    <div>
+      <label><strong>Assinatura Master:</strong></label>
+      {{ currentPilacoin.assinaturaMaster }}
+    </div>
+    <div>
+      <label><strong>Nonce:</strong></label>
+      {{ currentPilacoin.nonce }}
+    </div>
+    <a
+      class="badge badge-warning"
+      routerLink="/transferir/{{ currentPilacoin.id }}"
+    >
+      Transferir
+    </a>
+  </div>
+
+  <div *ngIf="!currentPilacoin">
+    <br />
+    <p>Clique em uma receita</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentPilacoin.id" class="edit-form">
+    <h4>Receita</h4>
+    <form>
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input
+          type="text"
+          class="form-control"
+          id="id"
+          [(ngModel)]="currentPilacoin.id"
+          name="id"
+        />
+      </div>
+      <div class="form-group">
+        <label for="idCriador">id Criador</label>
+        <input
+          type="text"
+          class="form-control"
+          id="idCriador"
+          [(ngModel)]="currentPilacoin.idCriador"
+          name="idCriador"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="dataCriacao">Data Criação</label>
+        <input
+          type="text"
+          class="form-control"
+          id="dataCriacao"
+          [(ngModel)]="currentPilacoin.dataCriacao"
+          name="dataCriacao"
+        />
+      </div>
+      <div class="form-group">
+        <label for="assinaturaMaster">Assinatura Master</label>
+        <input
+          type="text"
+          class="form-control"
+          id="assinaturaMaster"
+          [(ngModel)]="currentPilacoin.assinaturaMaster"
+          name="assinaturaMaster"
+        />
+      </div>
+      <div class="form-group">
+        <label for="nonce">Nonce</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nonce"
+          [(ngModel)]="currentPilacoin.nonce"
+          name="nonce"
+        />
+      </div>
+
+    </form>
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updatePilacoin()"
+    >
+      Salvar Alteração
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentPilacoin.id">
+    <br />
+    <p>Não posso acessar esse pila...</p>
+  </div>
+</ng-template>
